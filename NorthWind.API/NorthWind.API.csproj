@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NorthWind.API.ServiceDefaults\NorthWind.API.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\NorthWind.Application\NorthWind.Application.csproj" />
+    <ProjectReference Include="..\NorthWind.Infrastructure\NorthWind.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

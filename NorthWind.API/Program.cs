@@ -1,3 +1,5 @@
+using NorthWind.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -6,6 +8,7 @@ builder.AddServiceDefaults();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
