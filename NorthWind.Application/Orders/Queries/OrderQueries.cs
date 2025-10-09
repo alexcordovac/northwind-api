@@ -30,21 +30,6 @@ public static class OrderQueries
         query.OrderByDescending(order => order.OrderDate ?? DateTime.MinValue)
              .ThenByDescending(order => order.OrderId);
 
-    public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, int skip, int take)
-    {
-        if (skip > 0)
-        {
-            query = query.Skip(skip);
-        }
-
-        if (take > 0)
-        {
-            query = query.Take(take);
-        }
-
-        return query;
-    }
-
     public static IQueryable<OrderSummaryDto> ProjectToSummary(this IQueryable<Order> query) =>
         query.Select(order => new OrderSummaryDto(
             order.OrderId,

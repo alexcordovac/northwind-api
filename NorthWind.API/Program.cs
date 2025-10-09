@@ -21,8 +21,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddEndpoints();
 builder.Services.AddVersions();
-builder.Services.AddValidatorsFromAssemblyContaining<GetOrdersRequestValidator>();
-
+builder.Services.AddValidatorsFromAssemblyContaining<PaginatedQueryRequestValidator>();
 
 var app = builder.Build();
 app.MapDefaultEndpoints();

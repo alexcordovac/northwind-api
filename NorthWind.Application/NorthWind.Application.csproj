@@ -14,4 +14,8 @@
     <ProjectReference Include="..\NorthWind.Domain\NorthWind.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Orders\Validators\" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,6 @@
-namespace NorthWind.Application.Orders.DTOs;
+namespace NorthWind.Application.Common.Pagination;
 
-public sealed record GetOrdersResponseDto(
-    IReadOnlyCollection<OrderSummaryDto> Orders,
+public sealed record PaginationMetadata(
     int Page,
     int Rows,
     int Offset,

@@ -1,11 +1,12 @@
 using FluentValidation;
+using NorthWind.API.Common.Pagination;
 using NorthWind.API.Orders;
 
 namespace NorthWind.Application.Orders.Validators;
 
-public sealed class GetOrdersRequestValidator : AbstractValidator<GetOrdersRequest>
+public sealed class PaginatedQueryRequestValidator : AbstractValidator<PaginatedQueryRequest>
 {
-    public GetOrdersRequestValidator()
+    public PaginatedQueryRequestValidator()
     {
         RuleFor(input => input.Page)
             .GreaterThanOrEqualTo(1);

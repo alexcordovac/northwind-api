@@ -1,10 +1,4 @@
-namespace NorthWind.Application.Orders;
+using NorthWind.Application.Common.Pagination;
 
-public sealed record GetOrdersInput(
-    int Page,
-    int Rows,
-    int Offset,
-    string? Query)
-{
-    public string? NormalizedQuery => string.IsNullOrWhiteSpace(Query) ? null : Query.Trim();
-}
+namespace NorthWind.Application.Orders;
+public sealed record GetOrdersInput(int Page, int Rows, int Offset, string? Query) : PaginatedRequest(Page, Rows, Offset, Query);
