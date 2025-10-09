@@ -1,9 +1,11 @@
 using Asp.Versioning.ApiExplorer;
+using FluentValidation;
 using NorthWind.API.Endpoints;
 using NorthWind.API.Migration;
 using NorthWind.API.OpenApi;
 using NorthWind.API.Version;
 using NorthWind.Application;
+using NorthWind.Application.Orders.Validators;
 using NorthWind.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +21,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddEndpoints();
 builder.Services.AddVersions();
-
+builder.Services.AddValidatorsFromAssemblyContaining<GetOrdersRequestValidator>();
 
 
 var app = builder.Build();

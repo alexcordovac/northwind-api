@@ -11,21 +11,6 @@ public sealed class GetOrdersUseCase(INorthWindDbContext _dbContext)
 {
     public async Task<Result<GetOrdersResponseDto>> ExecuteAsync(GetOrdersInput input, CancellationToken cancellationToken)
     {
-        if (input.Page <= 0)
-        {
-            return Result.Fail(new Error("Page must be greater than or equal to 1."));
-        }
-
-        if (input.Rows <= 0)
-        {
-            return Result.Fail(new Error("Rows must be greater than 0."));
-        }
-
-        if (input.Offset < 0)
-        {
-            return Result.Fail(new Error("Offset cannot be negative."));
-        }
-
         string? searchTerm = input.NormalizedQuery;
         int recordsToSkip = ((input.Page - 1) * input.Rows) + input.Offset;
 
