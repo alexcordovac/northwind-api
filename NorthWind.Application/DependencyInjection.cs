@@ -8,7 +8,6 @@ namespace NorthWind.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-
             services.AddTransient<GetOrdersUseCase>();
             
             return services;

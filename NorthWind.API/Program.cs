@@ -16,8 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
-builder.Services.AddVersions();
 builder.Services.AddEndpoints();
+builder.Services.AddVersions();
 
 
 

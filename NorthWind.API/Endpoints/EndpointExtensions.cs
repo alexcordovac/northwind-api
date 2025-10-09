@@ -2,6 +2,7 @@
 using Asp.Versioning.Builder;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using NorthWind.API.Common;
+using NorthWind.API.Orders;
 using System.Reflection;
 
 namespace NorthWind.API.Endpoints;
@@ -10,6 +11,9 @@ internal static class EndpointExtensions
 {
     internal static IServiceCollection AddEndpoints(this IServiceCollection services)
     {
+        services.AddScoped<GetOrdersEndpoint>();
+
+
         services.AddEndpoints(Assembly.GetExecutingAssembly());
 
         return services;
