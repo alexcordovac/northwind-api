@@ -1,3 +1,4 @@
+using NorthWind.API.Endpoints;
 using NorthWind.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.AddServiceDefaults();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddEndpoints();
 
 var app = builder.Build();
 
