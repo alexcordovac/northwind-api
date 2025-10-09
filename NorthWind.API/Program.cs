@@ -1,5 +1,6 @@
 using Asp.Versioning.ApiExplorer;
 using NorthWind.API.Endpoints;
+using NorthWind.API.Migration;
 using NorthWind.API.OpenApi;
 using NorthWind.API.Version;
 using NorthWind.Application;
@@ -41,6 +42,8 @@ if (app.Environment.IsDevelopment())
             options.SwaggerEndpoint(url, name);
         }
     });
+
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
