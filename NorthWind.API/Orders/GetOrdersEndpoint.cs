@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NorthWind.API.Common;
 using NorthWind.API.Common.Pagination;
 using NorthWind.API.Endpoints;
-using NorthWind.API.Filters;
+using NorthWind.API.Middlewares;
 using NorthWind.Application.Common.Pagination;
 using NorthWind.Application.Orders;
 using NorthWind.Application.Orders.DTOs;

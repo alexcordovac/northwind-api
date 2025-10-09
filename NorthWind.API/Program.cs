@@ -1,6 +1,7 @@
 using Asp.Versioning.ApiExplorer;
 using FluentValidation;
 using NorthWind.API.Endpoints;
+using NorthWind.API.Middlewares;
 using NorthWind.API.Migration;
 using NorthWind.API.OpenApi;
 using NorthWind.API.Version;
@@ -22,6 +23,8 @@ builder.Services.AddApplication();
 builder.Services.AddEndpoints();
 builder.Services.AddVersions();
 builder.Services.AddValidatorsFromAssemblyContaining<PaginatedQueryRequestValidator>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 app.MapDefaultEndpoints();
@@ -48,6 +51,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
+
 
 var summaries = new[]
 {

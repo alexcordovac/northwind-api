@@ -1,8 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
-namespace NorthWind.API.Filters
+namespace NorthWind.API.Middlewares
 {
     public class ValidationFilter<TModel> : IEndpointFilter
     {
