@@ -1,5 +1,8 @@
-﻿using System.Reflection;
+﻿using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using NorthWind.API.Common;
+using System.Reflection;
 
 namespace NorthWind.API.Endpoints;
 
@@ -26,7 +29,7 @@ internal static class EndpointExtensions
         return services;
     }
 
-    private static IApplicationBuilder MapEndpoints(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
+    internal static IApplicationBuilder MapEndpoints(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
     {
         IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 
