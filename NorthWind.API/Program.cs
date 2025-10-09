@@ -2,6 +2,7 @@ using Asp.Versioning.ApiExplorer;
 using NorthWind.API.Endpoints;
 using NorthWind.API.OpenApi;
 using NorthWind.API.Version;
+using NorthWind.Application;
 using NorthWind.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 builder.Services.AddVersions();
 builder.Services.AddEndpoints();
 

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NorthWind.Application.Common;
 using NorthWind.Infrastructure.Configuration;
 using NorthWind.Infrastructure.Persistence;
 
@@ -17,8 +18,9 @@ public static class DependencyInjection
             throw new InvalidOperationException($"Connection string '{ConnectionStringNames.NorthWind}' was not found.");
         }
 
-        services.AddDbContext<NorthWindDbContext>(options =>
-            options.UseSqlServer(connectionString));
+        services.AddDbContext<NorthWindDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddScoped<INorthWindDbContext>(provider => provider.GetRequiredService<NorthWindDbContext>());
+
 
         return services;
     }

@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using NorthWind.Application.Common;
 using NorthWind.Domain.Entities;
 
 namespace NorthWind.Infrastructure.Persistence;
 
-public class NorthWindDbContext(DbContextOptions<NorthWindDbContext> options) : DbContext(options)
+public class NorthWindDbContext(DbContextOptions<NorthWindDbContext> options) : DbContext(options), INorthWindDbContext
 {
     public DbSet<Category> Categories => Set<Category>();
 
