@@ -6,9 +6,9 @@ public static class PaginationExtensions
 {
     public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, PaginationParameters parameters)
     {
-        if (parameters.Skip > 0)
+        if (parameters.Offset > 0)
         {
-            query = query.Skip(parameters.Skip);
+            query = query.Skip(parameters.Offset);
         }
 
         if (parameters.Rows > 0)
@@ -39,8 +39,8 @@ public static class PaginationExtensions
             ? 0
             : (int)Math.Ceiling(totalRows / (double)parameters.Rows);
 
-        bool hasPrevious = totalRows > 0 && parameters.Skip > 0;
-        bool hasNext = totalRows > 0 && parameters.Skip + returnedCount < totalRows;
+        bool hasPrevious = totalRows > 0 && parameters.Offset > 0;
+        bool hasNext = totalRows > 0 && parameters.Offset + returnedCount < totalRows;
 
         return new PaginationMetadata(
             parameters.Page,

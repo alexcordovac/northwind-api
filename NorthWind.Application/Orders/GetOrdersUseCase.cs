@@ -27,7 +27,7 @@ public sealed class GetOrdersUseCase
 
         int totalRows = await baseQuery.CountAsync(cancellationToken);
 
-        if (totalRows > 0 && pagination.Skip >= totalRows)
+        if (totalRows > 0 && pagination.Offset >= totalRows)
         {
             return Result.Fail(new Error("Requested page is outside the available data range."));
         }
