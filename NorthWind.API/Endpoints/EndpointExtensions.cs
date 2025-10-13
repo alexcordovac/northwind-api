@@ -15,6 +15,7 @@ internal static class EndpointExtensions
     {
         services.AddScoped<GetCustomersEndpoint>();
         services.AddScoped<GetEmployeesEndpoint>();
+        services.AddScoped<DeleteOrderEndpoint>();
         services.AddScoped<GetOrdersEndpoint>();
 
 

@@ -13,6 +13,7 @@ public static class DependencyInjection
         services.AddTransient<GetCustomersUseCase>();
         services.AddTransient<GetEmployeesUseCase>();
         services.AddTransient<GetOrdersUseCase>();
+        services.AddTransient<DeleteOrderUseCase>();
 
         return services;
     }
