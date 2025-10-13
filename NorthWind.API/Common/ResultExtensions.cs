@@ -23,6 +23,18 @@ internal static class ResultExtensions
         return TypedResults.Problem(problem);
     }
 
+    internal static IResult ToHttpResult<TValue>(this Result<TValue> result, Func<TValue, IResult> successFactory)
+    {
+        if (result.IsSuccess)
+        {
+            return successFactory(result.Value);
+        }
+
+        ProblemDetails problem = CreateProblemDetails(result.Errors);
+
+        return TypedResults.Problem(problem);
+    }
+
     internal static IResult ToHttpResult(this Result result, Func<IResult>? successFactory = null)
     {
         if (result.IsSuccess)

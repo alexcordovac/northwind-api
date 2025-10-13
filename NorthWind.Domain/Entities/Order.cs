@@ -1,6 +1,6 @@
 namespace NorthWind.Domain.Entities;
 
-public class Order
+public partial class Order
 {
     protected Order()
     {

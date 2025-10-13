@@ -5,6 +5,7 @@ using NorthWind.API.Common;
 using NorthWind.API.Customers;
 using NorthWind.API.Employees;
 using NorthWind.API.Orders;
+using NorthWind.API.Products;
 using System.Reflection;
 
 namespace NorthWind.API.Endpoints;
@@ -15,8 +16,10 @@ internal static class EndpointExtensions
     {
         services.AddScoped<GetCustomersEndpoint>();
         services.AddScoped<GetEmployeesEndpoint>();
+        services.AddScoped<CreateOrderEndpoint>();
         services.AddScoped<DeleteOrderEndpoint>();
         services.AddScoped<GetOrdersEndpoint>();
+        services.AddScoped<GetProductsEndpoint>();
 
 
         services.AddEndpoints(Assembly.GetExecutingAssembly());

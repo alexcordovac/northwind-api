@@ -13,5 +13,7 @@ public interface INorthWindDbContext
 
     DbSet<Order> Orders { get; }
 
+    DbSet<Product> Products { get; }
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
