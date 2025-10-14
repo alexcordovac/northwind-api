@@ -23,9 +23,9 @@ namespace NorthWind.API.Middlewares
             {
                 Title = "An unexpected error occurred",
                 Status = 500,
-                Detail = exception?.Message,
+                Detail = $"{exception?.Message} {exception?.InnerException?.Message}",
                 Instance = httpContext.Request.Path,
-                Type = "https://example.com/problems/internal-server-error"
+                Type = exception?.GetType().ToString()
             };
 
             problemDetails.Extensions["traceId"] = httpContext.TraceIdentifier;
