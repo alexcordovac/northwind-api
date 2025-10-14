@@ -26,6 +26,8 @@ public sealed class DeleteOrderUseCase
             return Result.Fail(new NotFoundError($"Order with id '{orderId}' was not found."));
         }
 
+        // TODO: Delete order detail and use transaction
+
         _dbContext.Orders.Remove(order);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
