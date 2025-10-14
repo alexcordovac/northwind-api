@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace NorthWind.API.Middlewares
 {
@@ -22,7 +23,7 @@ namespace NorthWind.API.Middlewares
             var problemDetails = new ProblemDetails
             {
                 Title = "An unexpected error occurred",
-                Status = 500,
+                Status = (int)HttpStatusCode.InternalServerError,
                 Detail = $"{exception?.Message} {exception?.InnerException?.Message}",
                 Instance = httpContext.Request.Path,
                 Type = exception?.GetType().ToString()
