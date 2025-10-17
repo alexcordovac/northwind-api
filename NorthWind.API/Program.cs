@@ -84,7 +84,7 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole(RoleNames.ProductManager));
 
     options.AddPolicy(AuthorizationPolicyNames.CustomerView, policy =>
-        policy.RequireRole(RoleNames.ProductManager, RoleNames.SalesRepresentative, RoleNames.WarehouseClerk));
+        policy.RequireRole(RoleNames.SalesRepresentative));
 
     options.AddPolicy(AuthorizationPolicyNames.OrderView, policy =>
         policy.RequireRole(RoleNames.ProductManager, RoleNames.SalesRepresentative, RoleNames.WarehouseClerk));
