@@ -4,6 +4,7 @@ using NorthWind.API.Common;
 using NorthWind.API.Common.Pagination;
 using NorthWind.API.Endpoints;
 using NorthWind.API.Middlewares;
+using NorthWind.API.Security;
 using NorthWind.Application.Common.Pagination;
 using NorthWind.Application.Employees;
 using NorthWind.Application.Employees.DTOs;
@@ -20,7 +21,9 @@ internal sealed class GetEmployeesEndpoint : IEndpoint
             .WithTags(EmployeeEndpoints.Tag)
             .Produces<PagedResult<EmployeeSummaryDto>>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .AddEndpointFilter<ValidationFilter<PaginatedQueryRequest>>();
+            .AddEndpointFilter<ValidationFilter<PaginatedQueryRequest>>()
+            .RequireAuthorization(AuthorizationPolicyNames.EmployeeView)
+            .WithOpenApi();
     }
 
     private async Task<IResult> HandleAsync(

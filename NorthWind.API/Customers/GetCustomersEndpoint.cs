@@ -7,6 +7,7 @@ using NorthWind.API.Middlewares;
 using NorthWind.Application.Common.Pagination;
 using NorthWind.Application.Customers;
 using NorthWind.Application.Customers.DTOs;
+using NorthWind.API.Security;
 
 namespace NorthWind.API.Customers;
 
@@ -20,7 +21,8 @@ internal sealed class GetCustomersEndpoint : IEndpoint
             .WithTags(CustomerEndpoints.Tag)
             .Produces<PagedResult<CustomerSummaryDto>>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .AddEndpointFilter<ValidationFilter<PaginatedQueryRequest>>();
+            .AddEndpointFilter<ValidationFilter<PaginatedQueryRequest>>()
+            .RequireAuthorization(AuthorizationPolicyNames.CustomerView);
     }
 
     private async Task<IResult> HandleAsync(

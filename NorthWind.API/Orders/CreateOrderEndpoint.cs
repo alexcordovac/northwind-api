@@ -5,6 +5,7 @@ using NorthWind.API.Endpoints;
 using NorthWind.API.Middlewares;
 using NorthWind.Application.Orders;
 using NorthWind.Application.Orders.DTOs;
+using NorthWind.API.Security;
 
 namespace NorthWind.API.Orders;
 
@@ -16,7 +17,9 @@ internal sealed class CreateOrderEndpoint : IEndpoint
             .WithTags(OrderEndpoints.Tag)
             .Produces<OrderSummaryDto>(StatusCodes.Status201Created)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .AddEndpointFilter<ValidationFilter<CreateOrderRequest>>();
+            .AddEndpointFilter<ValidationFilter<CreateOrderRequest>>()
+            .RequireAuthorization(AuthorizationPolicyNames.OrderCreate)
+            .WithOpenApi();
     }
 
     private static async Task<IResult> HandleAsync(

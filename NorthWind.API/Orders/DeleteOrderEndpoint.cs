@@ -4,6 +4,7 @@ using NorthWind.API.Common;
 using NorthWind.API.Endpoints;
 using NorthWind.API.Middlewares;
 using NorthWind.Application.Orders;
+using NorthWind.API.Security;
 
 namespace NorthWind.API.Orders;
 
@@ -16,7 +17,8 @@ internal sealed class DeleteOrderEndpoint : IEndpoint
             .Produces(StatusCodes.Status204NoContent)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .AddEndpointFilter<ValidationFilter<DeleteOrderRequest>>();
+            .AddEndpointFilter<ValidationFilter<DeleteOrderRequest>>()
+            .RequireAuthorization(AuthorizationPolicyNames.OrderDelete);
     }
 
     private static async Task<IResult> HandleAsync(
